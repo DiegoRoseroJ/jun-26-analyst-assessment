@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# .NET build artifacts
+bin/
+obj/
+
+# Angular build output
+dist/
+
+# Environment
+.env
+.env.*
