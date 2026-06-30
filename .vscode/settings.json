@@ -11,5 +11,21 @@
         "statusBar.debuggingForeground": "#FFF8F4",
         "statusBar.noFolderBackground": "#9B4207",
         "statusBar.noFolderForeground": "#FFF8F4"
+    },
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.wordBasedSuggestions": "off",
+    "editor.tabCompletion": "off",
+
+    // GitHub Copilot (AI completions)
+    "github.copilot.enable": {
+        "*": false
     }
 }
