@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../../core/services/loan.service';
 import { Loan } from '../../../models/loan.model';
 import { LoanRowComponent } from '../components/loan-row.component';
+import { getLoanStatus, LoanStatus } from '../utils/loan-status.util';
 
 @Component({
   selector: 'app-loans-page',
@@ -12,6 +13,7 @@ import { LoanRowComponent } from '../components/loan-row.component';
 
       <div class="summary">
         <span>Overdue: {{ overdueCount }}</span>
+        <span>Due today: {{ dueTodayCount }}</span>
         <span>Due soon: {{ dueSoonCount }}</span>
         <span>On time: {{ onTimeCount }}</span>
       </div>
@@ -56,28 +58,22 @@ export class LoansPageComponent implements OnInit {
   }
 
   get overdueCount(): number {
-    return this.loans.filter((loan) => this.deriveStatus(loan) === 'Overdue').length;
+    return this.getStatusCount('Overdue');
+  }
+
+  get dueTodayCount(): number {
+    return this.getStatusCount('Due today');
   }
 
   get dueSoonCount(): number {
-    return this.loans.filter((loan) => this.deriveStatus(loan) === 'Due soon').length;
+    return this.getStatusCount('Due soon');
   }
 
   get onTimeCount(): number {
-    return this.loans.filter((loan) => this.deriveStatus(loan) === 'On time').length;
+    return this.getStatusCount('On time');
   }
 
-  private deriveStatus(loan: Loan): string {
-    const due = new Date(loan.dueOn + 'T00:00:00');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const diffDays = Math.round((due.getTime() - today.getTime()) / 86400000);
-    if (diffDays < 0) {
-      return 'Overdue';
-    }
-    if (diffDays <= 3) {
-      return 'Due soon';
-    }
-    return 'On time';
+  private getStatusCount(status: LoanStatus): number {
+    return this.loans.filter((loan) => getLoanStatus(loan.dueOn) === status).length;
   }
 }
