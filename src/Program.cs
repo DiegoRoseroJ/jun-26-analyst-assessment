@@ -17,8 +17,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();  
+    app.UseSwaggerUI(); 
+}
+
 app.UseCors("AllowFrontend");
-app.UseSwagger();
-app.UseSwaggerUI();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapControllers();
 app.Run();

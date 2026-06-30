@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Loan } from '../../../models/loan.model';
+import { getLoanStatus } from '../utils/loan-status.util';
 
 @Component({
   selector: 'app-loan-row',
@@ -47,16 +48,6 @@ export class LoanRowComponent {
   @Input({ required: true }) loan!: Loan;
 
   get status(): string {
-    const due = new Date(this.loan.dueOn + 'T00:00:00');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const diffDays = Math.round((due.getTime() - today.getTime()) / 86400000);
-    if (diffDays < 0) {
-      return 'Overdue';
-    }
-    if (diffDays <= 3) {
-      return 'Due soon';
-    }
-    return 'On time';
+    return getLoanStatus(this.loan.dueOn);
   }
 }

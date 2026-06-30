@@ -16,7 +16,7 @@ public IReadOnlyList<Loan> GetLoans()
 ```
 
 - [ ] A) It makes the method run faster than a shorter name would
-- [ ] B) The name states what the method returns in the library's own words, so a reader knows its purpose without reading the body
+- [x] B) The name states what the method returns in the library's own words, so a reader knows its purpose without reading the body
 - [ ] C) C# requires methods that return lists to begin with the word `Get`
 - [ ] D) It stops callers from ever reading the loans
 
@@ -34,7 +34,7 @@ var dueOn = checkedOutOn.AddDays(request.LoanDays);
 - [ ] A) Longer names are required by C# for `DateOnly` values
 - [ ] B) The name changes how the date is stored in memory
 - [ ] C) Short names like `d` would cause the build to fail
-- [ ] D) `checkedOutOn` tells the reader what the value represents, so the due-date line reads in plain language
+- [x] D) `checkedOutOn` tells the reader what the value represents, so the due-date line reads in plain language
 
 ---
 
@@ -49,7 +49,7 @@ public class LoanService : ILoanService
 }
 ```
 
-- [ ] A) Code outside the service cannot add or remove loans directly, so the service stays in control of how loans change
+- [x] A) Code outside the service cannot add or remove loans directly, so the service stays in control of how loans change
 - [ ] B) Private fields are stored more efficiently than public fields
 - [ ] C) C# does not allow public fields in a service class
 - [ ] D) It makes the list sort itself by due date
@@ -70,7 +70,7 @@ public class Loan
 
 - [ ] A) These properties can be changed at any time after the loan is created
 - [ ] B) The properties will be filled in automatically by the framework
-- [ ] C) A `Loan` cannot be created without supplying these values, so a loan always has an id and a member
+- [x] C) A `Loan` cannot be created without supplying these values, so a loan always has an id and a member
 - [ ] D) The values are optional and default to null
 
 ---
@@ -83,7 +83,7 @@ public class Loan
 var reminder = $"EMAIL -> {loan.MemberName}: \"{loan.BookTitle}\" is due on {loan.DueOn:yyyy-MM-dd}.";
 ```
 
-- [ ] A) The final shape of the message is visible in one line, so it is easy to see what the member receives
+- [x] A) The final shape of the message is visible in one line, so it is easy to see what the member receives
 - [ ] B) It sends the reminder faster
 - [ ] C) It is the only way C# can place a date inside a string
 - [ ] D) It hides the member's name from the message
@@ -100,7 +100,7 @@ public required DateOnly DueOn { get; init; }
 
 - [ ] A) The due date can be changed by any caller at any time
 - [ ] B) The property cannot be read after creation
-- [ ] C) The due date is set when the loan is created and cannot be reassigned afterwards
+- [x] C) The due date is set when the loan is created and cannot be reassigned afterwards
 - [ ] D) The due date is recalculated on every read
 
 ---
@@ -117,7 +117,7 @@ public IReadOnlyList<string> GetNotices()
 ```
 
 - [ ] A) Short methods always run faster than longer ones
-- [ ] B) A method that does one clear thing is easy to read and reason about at a glance
+- [x] B) A method that does one clear thing is easy to read and reason about at a glance
 - [ ] C) A method must never contain more than one line in C#
 - [ ] D) Returning a value is only allowed in methods named `Get...`
 
@@ -137,7 +137,7 @@ if (string.IsNullOrWhiteSpace(request.MemberName))
 - [ ] A) The message changes how fast the check runs
 - [ ] B) C# requires every exception message to contain the word "required"
 - [ ] C) A generic message would stop the application from starting
-- [ ] D) It tells whoever sees the failure exactly what was wrong, which makes the problem easy to understand
+- [x] D) It tells whoever sees the failure exactly what was wrong, which makes the problem easy to understand
 
 ---
 
@@ -151,7 +151,7 @@ var loan = new Loan { Id = 1, MemberName = "Sam", BookTitle = "Dune" /* ... */ }
 
 - [ ] A) `loan` is the blueprint and `Loan` is the object
 - [ ] B) `Loan` and `loan` are two unrelated types
-- [ ] C) `Loan` is the blueprint; `loan` is one specific object built from that blueprint
+- [x] C) `Loan` is the blueprint; `loan` is one specific object built from that blueprint
 - [ ] D) `new` makes `Loan` and `loan` permanently share the same memory
 
 ---
@@ -168,7 +168,7 @@ public Loan Checkout(CheckoutRequest request)
 }
 ```
 
-- [ ] A) Readers can tell at a glance what is a parameter/local and what is a property, because the codebase is consistent
+- [x] A) Readers can tell at a glance what is a parameter/local and what is a property, because the codebase is consistent
 - [ ] B) camelCase values are faster to access than PascalCase ones
 - [ ] C) The casing decides whether the value is stored in memory
 - [ ] D) C# will not compile unless every name is PascalCase
@@ -190,7 +190,7 @@ public class CheckoutRequest
 - [ ] A) Descriptive names are required for the request body to be read
 - [ ] B) `BookTitle` uses less memory than `t`
 - [ ] C) The name changes the order the properties are sent in
-- [ ] D) Anyone reading the request immediately knows the value is the title of a book, with no guessing
+- [x] D) Anyone reading the request immediately knows the value is the title of a book, with no guessing
 
 ---
 
@@ -205,7 +205,7 @@ var loan = new Loan { Id = _nextId++, /* ... */ };
 ```
 
 - [ ] A) Callers can assign ids faster than the service can
-- [ ] B) The service owns how ids are produced, so every loan gets a unique id without callers having to manage it
+- [x] B) The service owns how ids are produced, so every loan gets a unique id without callers having to manage it
 - [ ] C) C# forbids passing an id into a constructor
 - [ ] D) It makes the loan list shorter
 
@@ -227,7 +227,7 @@ public class Loan
 - [ ] A) It is broken because every class must contain at least one method
 - [ ] B) It runs the lending rules for the application
 - [ ] C) It handles the HTTP request for a checkout
-- [ ] D) It is a simple data holder that describes the shape of a loan and carries its values around
+- [x] D) It is a simple data holder that describes the shape of a loan and carries its values around
 
 ---
 
@@ -241,7 +241,7 @@ public IReadOnlyList<string> GetNotices() => _notices;
 ```
 
 - [ ] A) It makes the two methods return the same data
-- [ ] B) Readers can predict what a method does from its name because similar methods are named the same way
+- [x] B) Readers can predict what a method does from its name because similar methods are named the same way
 - [ ] C) It is required before a class can have two methods
 - [ ] D) It guarantees the methods run in a fixed order
 
@@ -258,7 +258,7 @@ public Loan Checkout(CheckoutRequest request)
 }
 ```
 
-- [ ] A) A verb names the action the method performs, so a reader knows it does something rather than just holding data
+- [x] A) A verb names the action the method performs, so a reader knows it does something rather than just holding data
 - [ ] B) Verbs make methods run faster
 - [ ] C) Method names must always be a single verb in C#
 - [ ] D) It prevents the method from returning a value
@@ -275,7 +275,7 @@ private readonly List<Loan> _loans = new();
 
 - [ ] A) The items inside the list can never change
 - [ ] B) The list is read from a database each time
-- [ ] C) The field always points at the same list object — it cannot be reassigned to a different list later
+- [x] C) The field always points at the same list object — it cannot be reassigned to a different list later
 - [ ] D) The list can only be read on the first request
 
 ---
@@ -290,7 +290,7 @@ public required DateOnly DueOn { get; init; }
 ```
 
 - [ ] A) `DateOnly` values are smaller than strings in every case
-- [ ] B) The type makes it clear these values are calendar dates, not arbitrary text, so they are used as dates
+- [x] B) The type makes it clear these values are calendar dates, not arbitrary text, so they are used as dates
 - [ ] C) Strings cannot be stored in a class
 - [ ] D) It changes the time zone the dates are shown in
 
@@ -308,7 +308,7 @@ public IActionResult GetAll()
 }
 ```
 
-- [ ] A) The controller handles the web request and leaves the lending work to the service, so each part has a focused job
+- [x] A) The controller handles the web request and leaves the lending work to the service, so each part has a focused job
 - [ ] B) The controller runs faster because it skips the service
 - [ ] C) The service becomes unnecessary once the controller exists
 - [ ] D) The controller must store the loans itself for the route to work
@@ -328,7 +328,7 @@ public LoansController(ILoanService loanService)
 
 - [ ] A) It removes the need for a `LoanService` class entirely
 - [ ] B) It makes the controller create its own service
-- [ ] C) The controller works against a contract, so the actual service could be replaced without changing the controller
+- [x] C) The controller works against a contract, so the actual service could be replaced without changing the controller
 - [ ] D) It forces every request to create a new service
 
 ---
@@ -347,7 +347,7 @@ src/
 - [ ] A) Files are grouped by the date they were created
 - [ ] B) The folder name has no meaning and could be anything
 - [ ] C) Every file in `Services/` must contain a controller
-- [ ] D) The class holds business logic (the lending work), which the project keeps separate from the HTTP layer
+- [x] D) The class holds business logic (the lending work), which the project keeps separate from the HTTP layer
 
 ---
 
@@ -359,7 +359,7 @@ src/
 builder.Services.AddSingleton<ILoanService, LoanService>();
 ```
 
-- [ ] A) When something asks for `ILoanService`, the framework supplies a `LoanService`, so consumers depend on the contract and the wiring picks the concrete type
+- [x] A) When something asks for `ILoanService`, the framework supplies a `LoanService`, so consumers depend on the contract and the wiring picks the concrete type
 - [ ] B) It creates two separate services that both run
 - [ ] C) It renames `LoanService` to `ILoanService`
 - [ ] D) It prevents `LoanService` from being used anywhere
@@ -377,7 +377,7 @@ var dueOn = checkedOutOn.AddDays(request.LoanDays);
 - [ ] A) In the model class, because it holds the dates
 - [ ] B) In `Program.cs`, so it runs at startup
 - [ ] C) In the browser, before the request is sent
-- [ ] D) In the service, because that is where the application's lending logic lives
+- [x] D) In the service, because that is where the application's lending logic lives
 
 ---
 
@@ -392,7 +392,7 @@ var dueOn = checkedOutOn.AddDays(request.LoanDays);
 ```
 
 - [ ] A) The row component becomes able to load its own data
-- [ ] B) The page coordinates the data while each row focuses only on showing one loan — each has a clear job
+- [x] B) The page coordinates the data while each row focuses only on showing one loan — each has a clear job
 - [ ] C) The page no longer needs to exist
 - [ ] D) Both components fetch the same data twice
 
@@ -412,7 +412,7 @@ src/app/
 
 - [ ] A) It sorts files by how many lines each one has
 - [ ] B) It keeps every component in a single folder regardless of role
-- [ ] C) It separates an app-wide data service from the UI pieces that belong to one feature
+- [x] C) It separates an app-wide data service from the UI pieces that belong to one feature
 - [ ] D) It is decorative and the build ignores the folders
 
 ---
@@ -432,7 +432,7 @@ export interface Loan {
 
 - [ ] A) It makes the API respond faster
 - [ ] B) TypeScript requires C# classes to be copied exactly
-- [ ] C) Both sides agree on what a loan looks like, so the data the API sends lines up with what the UI expects
+- [x] C) Both sides agree on what a loan looks like, so the data the API sends lines up with what the UI expects
 - [ ] D) It lets the frontend skip calling the backend
 
 ---
@@ -450,7 +450,7 @@ public IActionResult GetNotices()
 ```
 
 - [ ] A) To store the loans and notices in memory
-- [ ] B) To act as the entry point that maps a web request to a service call and shapes the response
+- [x] B) To act as the entry point that maps a web request to a service call and shapes the response
 - [ ] C) To calculate due dates for each loan
 - [ ] D) To build the user interface the member sees
 
@@ -467,7 +467,7 @@ builder.Services.AddSingleton<ILoanService, LoanService>();
 - [ ] A) The loans are saved to a database automatically
 - [ ] B) Each request gets a brand new, empty list of loans
 - [ ] C) The service stops working after the first request
-- [ ] D) The same loan list is reused across requests, so loans added earlier are still there on later requests
+- [x] D) The same loan list is reused across requests, so loans added earlier are still there on later requests
 
 ---
 
@@ -481,7 +481,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-- [ ] A) Any service in the app can ask for `HttpClient` to make requests, configured in one place
+- [x] A) Any service in the app can ask for `HttpClient` to make requests, configured in one place
 - [ ] B) It makes every component send its own requests
 - [ ] C) It disables the backend API
 - [ ] D) It must be repeated inside every component that needs it
@@ -500,7 +500,7 @@ bootstrapApplication(App, appConfig);
 - [ ] A) Three copies of the same screen
 - [ ] B) A way to skip loading the loans
 - [ ] C) An error, because an app can only have one component
-- [ ] D) A clear top-level structure: one entry point composes the root component, which hosts the feature screen
+- [x] D) A clear top-level structure: one entry point composes the root component, which hosts the feature screen
 
 ---
 
@@ -518,7 +518,7 @@ public class LoansController : ControllerBase
 
 - [ ] A) Controllers are not allowed to have fields in C#
 - [ ] B) Holding the list in the controller would make routes faster
-- [ ] C) Keeping the data and lending logic in the service keeps the HTTP layer thin and focused on requests and responses
+- [x] C) Keeping the data and lending logic in the service keeps the HTTP layer thin and focused on requests and responses
 - [ ] D) The controller would need two lists instead of one
 
 ---
@@ -536,7 +536,7 @@ export class LoanService {
 }
 ```
 
-- [ ] A) The data-fetching is kept in one place that components share, instead of being scattered across components
+- [x] A) The data-fetching is kept in one place that components share, instead of being scattered across components
 - [ ] B) It makes the components unable to show data
 - [ ] C) It removes the need for the backend
 - [ ] D) Each component gets a different copy of the data
@@ -552,7 +552,7 @@ public LoansController(ILoanService loanService) { /* ... */ }
 ```
 
 - [ ] A) The controller already contains the database code
-- [ ] B) Because the controller depends on `ILoanService`, the storage can change behind that contract without changing the controller
+- [x] B) Because the controller depends on `ILoanService`, the storage can change behind that contract without changing the controller
 - [ ] C) The controller would have to be deleted and rewritten
 - [ ] D) Nothing — every layer would have to change together
 
@@ -569,7 +569,7 @@ features/loans/
 ```
 
 - [ ] A) The two folders must contain the same number of files
-- [ ] B) One folder holds the screen that orchestrates data, the other holds a piece that just shows what it is given
+- [x] B) One folder holds the screen that orchestrates data, the other holds a piece that just shows what it is given
 - [ ] C) Components in `components/` cannot be shown on screen
 - [ ] D) The folders are required by TypeScript to compile
 
@@ -587,7 +587,7 @@ public IActionResult Checkout([FromBody] CheckoutRequest request)
 }
 ```
 
-- [ ] A) A POST request to `/loans`, which is how a new checkout is sent to the API
+- [x] A) A POST request to `/loans`, which is how a new checkout is sent to the API
 - [ ] B) A GET request to `/loans`
 - [ ] C) Any request to the home page of the site
 - [ ] D) A request that runs automatically every minute
@@ -609,7 +609,7 @@ public class LoansController : ControllerBase
 
 - [ ] A) `/notices/loans`
 - [ ] B) `/loans` for every method in the class
-- [ ] C) `GET /loans/notices`
+- [x] C) `GET /loans/notices`
 - [ ] D) A route decided only by the method's name
 
 ---
@@ -630,7 +630,7 @@ public class LoansController : ControllerBase
 - [ ] A) It schedules the class to run as a background job
 - [ ] B) It connects the class to a database
 - [ ] C) It hides the class from the rest of the application
-- [ ] D) It marks the class as a web API controller that handles HTTP requests and applies API conventions
+- [x] D) It marks the class as a web API controller that handles HTTP requests and applies API conventions
 
 ---
 
@@ -643,7 +643,7 @@ var loan = _loanService.Checkout(request);
 return CreatedAtAction(nameof(GetAll), new { id = loan.Id }, loan);
 ```
 
-- [ ] A) That a new resource was created, signalled with a "created" response rather than a plain "OK"
+- [x] A) That a new resource was created, signalled with a "created" response rather than a plain "OK"
 - [ ] B) That the request failed
 - [ ] C) That the loan was deleted
 - [ ] D) That the response contains no data at all
@@ -661,7 +661,7 @@ builder.Services.AddControllers();
 
 - [ ] A) It opens a connection to a database
 - [ ] B) It creates the loan records at startup
-- [ ] C) It registers the controllers so the app can route incoming requests to their actions
+- [x] C) It registers the controllers so the app can route incoming requests to their actions
 - [ ] D) It starts the Angular development server
 
 ---
@@ -676,7 +676,7 @@ Prompt B: "Write a friendly one-sentence reminder that includes the book title a
 ```
 
 - [ ] A) Prompt A, because shorter prompts are always better
-- [ ] B) Prompt B, because it clearly states what the message must contain and how long it should be
+- [x] B) Prompt B, because it clearly states what the message must contain and how long it should be
 - [ ] C) Neither — the model cannot follow written instructions
 - [ ] D) Prompt A, because leaving details out lets the model be more accurate
 
@@ -693,7 +693,7 @@ Prompt: "Here is our full catalogue: <50,000 entries>. Now draft a reminder for 
 - [ ] A) The model will memorize the catalogue forever
 - [ ] B) Prompts are not allowed to contain lists
 - [ ] C) Larger prompts always give better answers
-- [ ] D) A prompt that large can exceed the model's context window; only the relevant book's details need to be included
+- [x] D) A prompt that large can exceed the model's context window; only the relevant book's details need to be included
 
 ---
 
@@ -707,7 +707,7 @@ Model output: "Your book is due in 30 days."
 
 - [ ] A) Always trust the model, since its outputs are objective facts
 - [ ] B) Assume the model has the most up-to-date policy
-- [ ] C) Treat the output as needing verification and check it against the system's actual rule before relying on it
+- [x] C) Treat the output as needing verification and check it against the system's actual rule before relying on it
 - [ ] D) Increase the prompt length until the model agrees
 
 ---
@@ -726,7 +726,7 @@ Model output: "Your book is due in 30 days."
 - [ ] A) Asking the model to be creative each time
 - [ ] B) Removing all punctuation from the prompt
 - [ ] C) Raising the temperature as high as possible
-- [ ] D) Giving the model a couple of example reminders to follow, so it imitates their format
+- [x] D) Giving the model a couple of example reminders to follow, so it imitates their format
 
 ---
 
@@ -738,7 +738,7 @@ Model output: "Your book is due in 30 days."
 Task: "Suggest three books a fantasy reader might enjoy."
 ```
 
-- [ ] A) Raising the temperature, which increases the variability of the model's output
+- [x] A) Raising the temperature, which increases the variability of the model's output
 - [ ] B) Removing the instruction entirely
 - [ ] C) Lowering the temperature to make every answer identical
 - [ ] D) Shortening the model's context window
@@ -750,7 +750,7 @@ Task: "Suggest three books a fantasy reader might enjoy."
 **The README asks you to open a pull request when your work is done, instead of pushing directly to the main branch. What does using a pull request enable?**
 
 - [ ] A) It deploys the code straight to members with no review
-- [ ] B) It lets the change be reviewed and checked before it becomes part of the main branch
+- [x] B) It lets the change be reviewed and checked before it becomes part of the main branch
 - [ ] C) It renames the main branch
 - [ ] D) It deletes the branch you were working on
 
@@ -767,7 +767,7 @@ git commit -m "Add Due today status to loan dashboard"
 - [ ] A) A request to deploy the application to production
 - [ ] B) A copy of the entire repository emailed to the team
 - [ ] C) A way to delete previous work permanently
-- [ ] D) A saved snapshot of your changes, recorded with a message that explains what changed
+- [x] D) A saved snapshot of your changes, recorded with a message that explains what changed
 
 ---
 
@@ -780,7 +780,7 @@ Step 1: dotnet build src/   ✓
 Step 2: cd frontend && ng build   ✗
 ```
 
-- [ ] A) The frontend did not build successfully, so the pipeline stops there and later steps such as deploy do not run
+- [x] A) The frontend did not build successfully, so the pipeline stops there and later steps such as deploy do not run
 - [ ] B) The backend must also have failed
 - [ ] C) It is only a warning and the app deploys anyway
 - [ ] D) The members lost their loan data
@@ -793,7 +793,7 @@ Step 2: cd frontend && ng build   ✗
 
 - [ ] A) Manual release — it removes the need for any builds
 - [ ] B) A backup system — it stores old versions of the code
-- [ ] C) Build automation — the app is built consistently on every change, catching build problems early
+- [x] C) Build automation — the app is built consistently on every change, catching build problems early
 - [ ] D) Branching — it creates a new copy of the repository each time
 
 ---
@@ -809,7 +809,7 @@ export class LoanRowComponent {
 ```
 
 - [ ] A) It fetches the loan from the server by itself
-- [ ] B) The parent passes a loan into the row through the `[loan]` binding
+- [x] B) The parent passes a loan into the row through the `[loan]` binding
 - [ ] C) It reads the loan from the browser's address bar
 - [ ] D) The loan is generated randomly inside the component
 
@@ -824,7 +824,7 @@ export class LoanRowComponent {
 ```
 
 - [ ] A) It sends the member name to the backend
-- [ ] B) It inserts the current value of `loan.memberName` into the rendered view
+- [x] B) It inserts the current value of `loan.memberName` into the rendered view
 - [ ] C) It changes the member's name to uppercase
 - [ ] D) It deletes the member name after one second
 
@@ -845,7 +845,7 @@ ngOnInit(): void {
 
 - [ ] A) Only when the user clicks a button
 - [ ] B) Every time the mouse moves over the component
-- [ ] C) Once, after Angular has created and initialized the component — a suitable point to load data
+- [x] C) Once, after Angular has created and initialized the component — a suitable point to load data
 - [ ] D) Before the component class exists at all
 
 ---
@@ -865,7 +865,7 @@ ngOnInit(): void {
 - [ ] A) A copy of every loan twice
 - [ ] B) The first loan in the list
 - [ ] C) An error message whenever the server is slow
-- [ ] D) A fallback message that appears only when there are no loans to show
+- [x] D) A fallback message that appears only when there are no loans to show
 
 ---
 
@@ -881,7 +881,7 @@ ngOnInit(): void {
 })
 ```
 
-- [ ] A) So the page's template is allowed to use the `<app-loan-row>` element
+- [x] A) So the page's template is allowed to use the `<app-loan-row>` element
 - [ ] B) So the row component can fetch data on its own
 - [ ] C) So the page runs faster
 - [ ] D) So the row component is hidden from the page
@@ -892,7 +892,7 @@ ngOnInit(): void {
 
 **The library plans to run this small API in the cloud and is choosing the size of the compute resource. What is the cost-aware choice for a low-traffic service?**
 
-- [ ] A) Pick a small resource sized to the actual need, rather than the largest available "just in case"
+- [x] A) Pick a small resource sized to the actual need, rather than the largest available "just in case"
 - [ ] B) Always pick the largest instance, because bigger is always better
 - [ ] C) Provision several identical large servers before there are any users
 - [ ] D) Resource size has no effect on cost
@@ -904,7 +904,7 @@ ngOnInit(): void {
 **A teammate suggests using an IaaS option where the library rents virtual machines. What does choosing IaaS mean for the team's responsibilities?**
 
 - [ ] A) The provider writes the application code for the team
-- [ ] B) The team manages the virtual machine and its operating system, including patching and configuration
+- [x] B) The team manages the virtual machine and its operating system, including patching and configuration
 - [ ] C) There is nothing left for the team to manage at all
 - [ ] D) The team can no longer deploy their own application
 
@@ -924,7 +924,7 @@ resource "app_service" "library_api" {
 - [ ] A) A list of step-by-step commands the team must run in order by hand
 - [ ] B) A backup of the running servers
 - [ ] C) A log of past deployments
-- [ ] D) A description of the desired end state, which the tool then works out how to achieve
+- [x] D) A description of the desired end state, which the tool then works out how to achieve
 
 ---
 
@@ -934,7 +934,7 @@ resource "app_service" "library_api" {
 
 - [ ] A) The region decides the programming language the API uses
 - [ ] B) Regions have no effect on anything user-facing
-- [ ] C) Hosting in a region close to the members reduces the time requests take to travel
+- [x] C) Hosting in a region close to the members reduces the time requests take to travel
 - [ ] D) The region changes how many loans the library can store
 
 ---
@@ -950,7 +950,7 @@ var expectedDue = DateOnly.FromDateTime(DateTime.UtcNow).AddDays(14);
 
 - [ ] A) `Assert.True(loan != null)`
 - [ ] B) No assertion is needed as long as the method does not throw
-- [ ] C) `Assert.Equal(expectedDue, loan.DueOn)`
+- [x] C) `Assert.Equal(expectedDue, loan.DueOn)`
 - [ ] D) `Assert.Equal(0, loan.Id)`
 
 ---
@@ -965,7 +965,7 @@ Assert.Equal(expected, actual);
 
 - [ ] A) It prints the value to the console for the developer to read
 - [ ] B) It deploys the code if the value looks right
-- [ ] C) It checks that the actual value matches the expected value, and fails the test if it does not
+- [x] C) It checks that the actual value matches the expected value, and fails the test if it does not
 - [ ] D) It speeds up the method being tested
 
 ---
@@ -978,7 +978,7 @@ Assert.Equal(expected, actual);
 var request = new CheckoutRequest { MemberName = "", BookTitle = "Dune" };
 ```
 
-- [ ] A) `Assert.Throws<ArgumentException>(() => service.Checkout(request))`
+- [x] A) `Assert.Throws<ArgumentException>(() => service.Checkout(request))`
 - [ ] B) `Assert.Equal("", request.MemberName)`
 - [ ] C) `Assert.True(service != null)`
 - [ ] D) No test can check for an exception
@@ -999,5 +999,6 @@ PASS  Checkout_RejectsEmptyMemberName
 - [ ] B) The specific behavior that test checks does not currently meet its expectation
 - [ ] C) Every test must be rewritten before continuing
 - [ ] D) The other tests did not really run
+- [x] B) The specific behavior that test checks does not currently meet its expectation
 
 ---
