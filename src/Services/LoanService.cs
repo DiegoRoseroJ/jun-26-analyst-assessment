@@ -6,7 +6,9 @@ public class LoanService : ILoanService
 {
     private readonly List<Loan> _loans = new();
     private readonly List<string> _notices = new();
+    private readonly List<StaffActivityRecord> _staffActivities = new();
     private int _nextId = 1;
+    private int _nextStaffActivityId = 1;
 
     public IReadOnlyList<Loan> GetLoans()
     {
@@ -41,6 +43,16 @@ public class LoanService : ILoanService
         };
 
         _loans.Add(loan);
+
+        _staffActivities.Add(new StaffActivityRecord
+        {
+            Id = _nextStaffActivityId++,
+            LoanId = loan.Id,
+            MemberName = loan.MemberName,
+            BookTitle = loan.BookTitle,
+            CheckedOutOn = loan.CheckedOutOn,
+            RecordedOn = DateTime.UtcNow
+        });
 
         var reminder = $"EMAIL -> {loan.MemberName}: \"{loan.BookTitle}\" is due on {loan.DueOn:yyyy-MM-dd}.";
         _notices.Add(reminder);
